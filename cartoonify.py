@@ -1,7 +1,15 @@
+##################################
+    # Modified by - Gunjan Yadav
+    # Modified on - 01/06/2021
+##################################
+
+#cartoonify.py
+
 import cv2
 import numpy as np
 
-img = cv2.imread("jk.jpeg")
+#read the image file you wish to cartoonify - image file in the local directory
+img = cv2.imread("image.jpeg")
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 gray = cv2.medianBlur(gray, 5)
@@ -10,6 +18,11 @@ color = cv2.bilateralFilter(img, 9, 250, 250)
 
 cartoon = cv2.bitwise_and(color, color, mask = edges)
 
-cv2.imwrite("result_jk.png", cartoon)
+#Write the cartoonified image in a result file (PNG type)
+cv2.imwrite("result.png", cartoon)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+
+#Run the file
+#Python3 cartoonify.py
